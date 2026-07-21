@@ -36,4 +36,6 @@ Fake-Video-Prank/
 
 ## 🚀 Nutzung
 
-- Einfach den link 
+- Baite sie ihren lautsprecher / Headset laut zu machen
+  (Mein Tip: Dein Mikrofon ultra leise stellen und mit deinem freund Telefonieren)
+- Und schicke ihm / ihr den Link: https://maxipaul0910-blip.github.io/meme-video/
