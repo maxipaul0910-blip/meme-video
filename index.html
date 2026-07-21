@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Video</title>
+
+    <style>
+
+        *{
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+            margin:0;
+            height:100vh;
+            background:#111;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+
+        .player{
+            background:#181818;
+            padding:20px;
+            border-radius:20px;
+        }
+
+
+        video{
+            width:600px;
+            max-width:90vw;
+            border-radius:15px;
+        }
+
+
+
+        button{
+
+            margin-top:15px;
+
+            width:55px;
+            height:45px;
+
+            border:none;
+
+            border-radius:10px;
+
+            background:#333;
+
+            color:white;
+
+            font-size:20px;
+
+            cursor:pointer;
+
+        }
+
+
+
+        #effect{
+
+            position:fixed;
+
+            inset:0;
+
+            background:black;
+
+            display:none;
+
+            justify-content:center;
+
+            align-items:center;
+
+            font-size:120px;
+
+            z-index:10;
+
+        }
+
+
+
+        .shake{
+
+            animation:shake .08s infinite;
+
+        }
+
+
+
+        @keyframes shake{
+
+        0%{
+        transform:translate(5px,5px);
+        }
+
+        50%{
+        transform:translate(-5px,-5px);
+        }
+
+        100%{
+        transform:translate(5px,-5px);
+        }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="player">
+
+
+    <video id="video" muted>
+
+        <source src="video.mp4" type="video/mp4">
+
+    </video>
+
+
+    <br>
+
+
+    <button onclick="playVideo()">
+        ▶
+    </button>
+
+
+    <button onclick="fakeMute()">
+        🔇
+    </button>
+
+
+</div>
+
+
+
+<div id="effect">
+    ☠️
+</div>
+
+
+
+<audio id="scare">
+
+    <source src="scare.mp3" type="audio/mpeg">
+
+</audio>
+
+
+
+<script>
+
+
+    const video = document.getElementById("video");
+
+    const scare = document.getElementById("scare");
+
+    const effect = document.getElementById("effect");
+
+
+    let clicks = 0;
+
+
+
+    // immer stumm halten
+
+    video.muted = true;
+    video.volume = 0;
+
+
+
+    function playVideo(){
+
+        video.play();
+
+    }
+
+
+
+
+    function fakeMute(){
+
+
+        clicks++;
+
+
+        // wieder blockieren
+        video.muted = true;
+        video.volume = 0;
+
+
+
+        if(clicks >= 6){
+
+
+            effect.style.display="flex";
+
+
+            document.body.classList.add("shake");
+
+
+
+            scare.currentTime = 0;
+
+            scare.volume = 1;
+
+            scare.play();
+
+
+
+            setTimeout(()=>{
+
+
+                effect.style.display="none";
+
+                document.body.classList.remove("shake");
+
+
+            },2000);
+
+
+        }
+
+
+    }
+
+
+
+</script>
+
+
+</body>
+</html>
